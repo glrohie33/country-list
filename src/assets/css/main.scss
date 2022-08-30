@@ -1,0 +1,172 @@
+body{
+  margin:0px !important;
+
+}
+@import "colors";
+:root{
+  font-family: Nunito Sans;
+}
+
+
+.app{
+  min-height: 100vh;
+}
+
+.content{
+  padding-top: 30px;
+}
+
+.app{
+  background: $_lightModeBackground;
+  header{
+    padding:20px 0px;
+    flex-grow: 1;
+    background: #fff;
+    box-shadow:0px 0.5px 4px 0px rgb(0 0 0 / 28%);
+    h3{
+      margin: 0px;
+      color: $_lightModeColor;
+    }
+
+    a{
+      text-decoration: none;
+      font-size: 12px;
+      text-transform: capitalize;
+      color: $_lightModeColor;
+      font-weight: 600;
+      svg{
+        font-size: inherit;
+      }
+    }
+
+    a:hover{
+      text-decoration: none;
+    }
+
+    p{
+      color: $_lightModeColor;
+    }
+  }
+
+}
+
+
+
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.container{
+  width: 85%;
+  margin: 0px auto;
+}
+
+
+
+@media (min-width: 969px) {
+  .container{
+    max-width: 800px;
+    margin: 0px auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container{
+    max-width: 1200px;
+    margin: 0px auto;
+  }
+}
+
+.btn{
+  background: $_lightModeElement;
+  color: $_lightModeColor;
+  text-transform: Capitalize;
+  display: flex;
+  align-items: center;
+}
+
+.btn-md{
+  @extend .btn;
+  border-radius:3px;
+  box-shadow: 0px 0.5px 4px 0px rgb(0 0 0 / 28%);
+  border:none;
+  padding: 5px 15px;
+
+}
+
+.btn-sm{
+  @extend .btn;
+  font-size: 12px;
+  margin: 0px 5px;
+  padding: 2px 15px;
+  box-shadow: 0 0 2px rgb(0 0 0 / 30%);
+}
+
+.app.dark{
+  background: $_darkModeBackground;
+  header{
+    background: $_darkModeElement;
+    box-shadow: none;
+  }
+  h3,
+  a,p{
+    color:$_darkModeColor;
+  }
+  .btn{
+    background: $_darkModeElement;
+    color: $_darkModeColor;
+  }
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+$_justify:[space-between,space-around,center,space-evenly];
+
+@each $val in $_justify{
+  .#{$val} {
+    justify-content: $val;
+  }
+
+  .align-#{$val}{
+    align-items: $val;
+  }
+}
+
+@for $i from 1 through 14{
+  $_width : calc($i/12) * 100;
+  $_perc : '%';
+
+  .col_xs_#{$i}, .col_md_#{$i}, col_md_#{#i} {
+    width: 100%;
+  }
+
+
+
+
+
+  @media (min-width: 768px) {
+    .col_sm_#{$i} {
+      width: calc(#{$_width}#{$_perc})
+    }
+
+  }
+
+  @media (min-width: 992px) {
+    .col_md_#{$i} {
+      width: calc(#{$_width}#{$_perc})
+    }
+  }
+
+
+  @media (min-width: 1200px) {
+    .col_lg_#{$i} {
+      width: calc(#{$_width}#{$_perc})
+    }
+  }
+
+}

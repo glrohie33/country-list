@@ -1,0 +1,159 @@
+@import "colors";
+::placeholder{
+  color:$_lightModeInput;
+}
+
+::-ms-input-placeholder{
+  color:$_lightModeInput;
+}
+::-webkit-input-placeholder{
+  color:$_lightModeInput;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .top-input{
+    border:none;
+    outline:none !important;
+    box-shadow:0px 0.5px 4px 0px rgb(0 0 0 / 20%);
+    position: relative;
+    border-radius: 2px;
+    text-transform: capitalize;
+  }
+
+  .input-settings{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    color:$_lightModeInput;
+  }
+
+  .icon-option{
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $_lightModeInput;
+  }
+
+  .search{
+    @extend .top-input;
+    width: 350px;
+    input{
+      @extend .input-settings;
+      padding: 15px 10px 15px 40px;
+    }
+
+
+
+    input:focus{
+      outline: none;
+    }
+
+    .search-icon{
+      @extend .icon-option;
+      left: 0px;
+      top: 0px;
+      width: 40px;
+      svg{
+        font-size: 20px;
+      }
+    }
+  }
+
+  .region-filter{
+    @extend .top-input;
+    margin-top: 40px;
+    width: 200px;
+
+    input{
+      @extend .input-settings;
+      padding: 15px 30px 15px 10px;
+    }
+
+
+    .options{
+      overflow: hidden;
+      transition: 1s;
+      width: 100%;
+      position: absolute;
+      top: calc(100% + 5px);
+      background: $_lightModeElement;
+      border-radius: 2px;
+      box-shadow: 0px 0.5px 4px 0px rgb(0 0 0 / 20%);
+      ul{
+        width: 100%;
+        list-style-type: none;
+        box-sizing: border-box;
+        padding: 0px;
+        li{
+          width: 100%;
+          font-size: 12px;
+          padding: 5px 17px;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .more-icon{
+      @extend .icon-option;
+      right: 0;
+      top: 0;
+      width: 30px;
+      svg{
+        font-size: 20px;
+      }
+    }
+  }
+
+}
+
+.countries{
+  margin-top: 30px;
+  margin-right: -25px;
+  margin-left: -25px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.dark{
+  .top-input{
+    background: $_darkModeElement;
+    color: $_darkModeColor;
+  }
+  .search{
+    .search-icon{
+      color: $_darkModeColor;
+    }
+  }
+
+  .region-filter{
+    .options{
+      background: $_darkModeElement;
+    }
+  }
+  ::placeholder{
+    color:$_darkModeColor;
+  }
+
+  ::-ms-input-placeholder{
+    color:$_darkModeColor;
+  }
+  ::-webkit-input-placeholder{
+    color:$_darkModeColor;
+  }
+}
+
+@media (min-width: 968px) {
+
+  .top{
+    .region-filter{
+      margin-top:0px;
+    }
+  }
+
+}
