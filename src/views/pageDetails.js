@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {get} from "../utils/functions";
 import {COUNTRYURL} from "../utils/texthelper";
@@ -24,19 +24,18 @@ function PageDetails(props) {
         return returnData;
     },[country]);
 
-    const loadCountry = ()=>{
-        console.log('there is an issue');
-        get(`${COUNTRYURL}/${slug}`).then(resp=>{
-            const {status,data} = resp;
-            if(status){
-                setCountry(data);
-            }
-        })
-    }
+    const loadCountry = useCallback(()=>{
+           get(`${COUNTRYURL}/${slug}`).then(resp=>{
+                const {status,data} = resp;
+                if(status){
+                    setCountry(data);
+                }
+            })
+    },[slug])
 
     useEffect(()=>{
             loadCountry();
-    },[])
+    },[loadCountry])
     return (
         <div className={'country-details'}>
             <div className="top">

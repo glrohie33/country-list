@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import '../assets/css/home.scss';
 import {get} from "../utils/functions";
-import {COUNTRIESURL, MOCKDATA, REGIONFILTER} from "../utils/texthelper";
+import {COUNTRIESURL, REGIONFILTER} from "../utils/texthelper";
 import CountryBox from "../components/countryBox";
 import {Search} from "@mui/icons-material";
 import CustomSelect from "../components/customSelect";
@@ -9,14 +9,6 @@ function Home(props) {
     const [countries,setCountries] = useState([]);
     const [region,setRegion] = useState("");
     const [search,setSearch] = useState('');
-    const loadCountries = ()=>{
-        get(`${COUNTRIESURL}?fields=name,region,capital,population,cioc,flags`)
-            .then(resp=>{
-                if(resp.status){
-                    setCountries(resp.data);
-                }
-            });
-    }
     const countryList = useMemo(()=>{
         return countries.filter(country=>{
             let regionValid = true;
@@ -32,7 +24,12 @@ function Home(props) {
     },[countries,search,region]);
 
     useEffect(()=>{
-        loadCountries();
+        get(`${COUNTRIESURL}?fields=name,region,capital,population,cioc,flags`)
+            .then(resp=>{
+                if(resp.status){
+                    setCountries(resp.data);
+                }
+            });
     },[])
 
    let timeOut = null;
@@ -47,6 +44,13 @@ function Home(props) {
         ,1000)
 
     }
+    const allRegion = useMemo(()=>{
+        return region;
+    },[region])
+
+    const changeRegion = useCallback((e)=>{
+        setRegion(e.target.value)
+    },[])
     return (
         <div className={'home'}>
             <div className="top">
@@ -57,7 +61,7 @@ function Home(props) {
                     </div>
                 </div>
                 <div className="region-filter">
-<CustomSelect value={region} onChange={(e)=>setRegion(e.target.value)} options={REGIONFILTER}/>
+                    <CustomSelect value={allRegion} onChange={changeRegion} options={REGIONFILTER}/>
                 </div>
             </div>
 

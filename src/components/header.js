@@ -7,7 +7,7 @@ function Header({colorMode,colorSettings,changeMode}) {
         <header>
             <div className={'container flex space-between'}>
                 <h3 className={'title'}>Where in the world?</h3>
-                <a href={''} className={'color-mode flex align-center'} onClick={changeMode}>
+                <a href={'/'} className={'color-mode flex align-center'} onClick={changeMode}>
                     {
                         colorSettings[colorMode].icon
                     }

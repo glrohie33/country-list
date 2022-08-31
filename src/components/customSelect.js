@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ExpandMore, Search} from "@mui/icons-material";
+import {ExpandMore} from "@mui/icons-material";
 
 function CustomSelect({options, onChange,value}) {
    const [displayOptions,setDisplayOptions] = useState(false);
    const [selected,setValue] = useState("");
    useEffect(()=>{
        onChange({target:{value:selected}})
-   },[selected])
+   },[selected,onChange])
 
     const blur = ()=>{
        setTimeout(()=>{
