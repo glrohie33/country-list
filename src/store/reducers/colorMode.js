@@ -8,7 +8,7 @@ const mode = window.localStorage.getItem(COLORMODEKEY);
 const colorMode = createSlice({
         name:"colorMode",
         initialState:{
-            currentMode: mode??"dark",
+            currentMode: mode??"light",
             colorSettings:{
                 'light':{
                     text:"dark mode",
