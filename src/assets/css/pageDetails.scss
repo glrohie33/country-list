@@ -87,7 +87,8 @@
   .borders{
     p{
       span:not(.border){
-        display: inline-block;
+        display: inline-block !important;
+        margin-right: 5px !important;
       }
     }
   }
