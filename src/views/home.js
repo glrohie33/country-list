@@ -55,7 +55,7 @@ function Home(props) {
         <div className={'home'}>
             <div className="top">
                 <div className="search">
-                    <input type={'type'} className={'search'} placeholder={'search for a country'} onChange={changeSearch} />
+                    <input type={'text'} className={'search'} placeholder={'search for a country'} onChange={changeSearch} />
                     <div className={'search-icon'}>
                         <Search/>
                     </div>

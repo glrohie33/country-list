@@ -15,7 +15,7 @@ function CustomSelect({options, onChange,value}) {
     }
     return (
         <>
-            <input type={'type'} readOnly={true} onClick={()=>{setDisplayOptions(true)}} onBlur={blur} value={value} className={'search'} placeholder={'filter by region'} />
+            <input type={'text'} readOnly={true} onClick={()=>{setDisplayOptions(true)}} onBlur={blur} value={value} className={'search'} placeholder={'filter by region'} />
             <div className={'more-icon'}>
                 <ExpandMore/>
             </div>
